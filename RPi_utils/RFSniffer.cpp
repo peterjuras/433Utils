@@ -23,6 +23,9 @@ int main(int argc, char *argv[]) {
      // Consult https://projects.drogon.net/raspberry-pi/wiringpi/pins/
      // for more information.
      int PIN = 2;
+
+     // Disable buffering to allow stream based consumption
+     setbuf(stdout, NULL);
      
      if(wiringPiSetup() == -1) {
        printf("wiringPiSetup failed, exiting...");
