@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
           printf("Unknown encoding\n");
         } else {    
    
-          printf("Received %i\n", mySwitch.getReceivedValue() );
+          printf("Received %lu\n", mySwitch.getReceivedValue() );
         }
     
         mySwitch.resetAvailable();
