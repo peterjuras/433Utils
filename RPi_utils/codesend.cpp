@@ -40,12 +40,12 @@ int main(int argc, char *argv[]) {
     }
 
     // Change protocol and pulse length accroding to parameters
-    int code = atoi(argv[1]);
+    unsigned long code = strtoul(argv[1], NULL, 0);
     if (argc >= 3) protocol = atoi(argv[2]);
     if (argc >= 4) pulseLength = atoi(argv[3]);
     
     if (wiringPiSetup () == -1) return 1;
-    printf("sending code[%i]\n", code);
+    printf("sending code[%lu]\n", code);
     RCSwitch mySwitch = RCSwitch();
     if (protocol != 0) mySwitch.setProtocol(protocol);
     if (pulseLength != 0) mySwitch.setPulseLength(pulseLength);
