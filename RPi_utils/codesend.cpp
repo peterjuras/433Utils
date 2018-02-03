@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
     }
 
     // Change protocol and pulse length accroding to parameters
-    unsigned long code = strtoul(argv[1], NULL, 0);
+    unsigned long code = strtoul(argv[1], NULL, 10);
     if (argc >= 3) protocol = atoi(argv[2]);
     if (argc >= 4) pulseLength = atoi(argv[3]);
     
@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
     if (pulseLength != 0) mySwitch.setPulseLength(pulseLength);
     mySwitch.enableTransmit(PIN);
     
-    mySwitch.send(code, 24);
+    mySwitch.send(code, 32);
     
     return 0;
 
