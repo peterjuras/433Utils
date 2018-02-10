@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
     if (wiringPiSetup () == -1) return 1;
     printf("sending systemCode[%s] unitCode[%i] command[%i]\n", systemCode, unitCode, command);
     RCSwitch mySwitch = RCSwitch();
-    if (argv[4] != NULL) mySwitch.setPulseLength(atoi(argv[4]));
+    if (argv[4] != NULL) mySwitch.setRepeatTransmit(atoi(argv[4]));
     mySwitch.enableTransmit(PIN);
     
     switch(command) {

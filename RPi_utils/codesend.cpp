@@ -29,6 +29,7 @@ int main(int argc, char *argv[]) {
     // Parse the first parameter to this command as an integer
     int protocol = 0; // A value of 0 will use rc-switch's default value
     int pulseLength = 0;
+    int repeatTransmit = 0;
 
     // If no command line argument is given, print the help text
     if (argc == 1) {
@@ -43,12 +44,14 @@ int main(int argc, char *argv[]) {
     unsigned long code = strtoul(argv[1], NULL, 10);
     if (argc >= 3) protocol = atoi(argv[2]);
     if (argc >= 4) pulseLength = atoi(argv[3]);
+    if (argc >= 5) repeatTransmit = atoi(argv[4]);
     
     if (wiringPiSetup () == -1) return 1;
     printf("sending code[%lu]\n", code);
     RCSwitch mySwitch = RCSwitch();
     if (protocol != 0) mySwitch.setProtocol(protocol);
     if (pulseLength != 0) mySwitch.setPulseLength(pulseLength);
+    if (repeatTransmit != 0) mySwitch.setRepeatTransmit(repeatTransmit);
     mySwitch.enableTransmit(PIN);
     
     mySwitch.send(code, 32);
